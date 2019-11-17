@@ -76,8 +76,16 @@ WSGI_APPLICATION = 'bank.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       # 'ENGINE': 'django.db.backends.sqlite3',   //changed by Rene
+       'ENGINE': 'django.db.backends.mysql',
+       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+       #added by Rene:
+       'NAME': 'pubcs_unlv',
+        'USER': 'pubcs_unlv',
+        'PASSWORD': 'gofundbank1',
+        'HOST': '192.48.32.130',
+        'PORT': '3306',
     }
 }
 
