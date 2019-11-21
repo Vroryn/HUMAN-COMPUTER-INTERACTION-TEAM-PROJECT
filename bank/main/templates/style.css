@@ -76,9 +76,10 @@ button:hover {
 
     flex-wrap: nowrap;
     
+
 }
 
-a {
+.footer > a, .footer > p > a {
     margin-left: 0.5%;
     color: black;
     text-decoration: none;
