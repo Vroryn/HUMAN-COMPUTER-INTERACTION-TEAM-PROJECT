@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+   # 'bank' #added by rene
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',

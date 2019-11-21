@@ -9,3 +9,7 @@ def index(request):
 
 def main_page(request):
     return render(request,'main/home_page.html')
+
+#added by Rene
+def checking_acct_page(request):
+    return render(request,'main/checking_acct_page.html')
