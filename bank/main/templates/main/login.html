@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div class="container" style="background-image:url(https://motionarray.imgix.net/preview-24541I28KusR5XZ_0002.jpg);">
+  <div class="container">
 
     <div id="login-container">
 
@@ -22,15 +22,22 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
 
+      <p>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+      </p>
+
+
+
       <button class ="GFG" onclick="window.location.href='http://127.0.0.1:8000/main_page';">
         Login
         </button>
 
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+ 
 
-      <span class="psw">Forgot <a href="#">username/password?</a></span>
+      <p><a class="login-bottom" href="#">Forgot username/password?</a> ></p>
+      <p><a class="login-bottom" href="#">Not Enrolled? Sign Up Now. </a> ></p>
 
     </div>
 
@@ -50,7 +57,7 @@
     <a href="#" class="fa fa-instagram"></a>
     <hr>
 
-    <p>
+    <p></p>
       <a href="#">Contact Us</a>
       <a href="#">Privacy</a>
       <a href="#">Security</a>
