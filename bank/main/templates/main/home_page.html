@@ -1,10 +1,133 @@
+{%load static%}
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body{
+            margin:0;
+            font-family:Arial;
+        }
+        ul{
+            list-style-type: none;
+            margin:0;
+            padding:0;
+            overflow: hidden;
+            background-color: #808080;
+        }
+        li{
+            float: left;
+        }
+        li{
+            display:block;
+            color:white;
+            text-align:center;
+            padding: 14px 16px;
+            text-decoration: none;
+
+        }
+
+        li a:hover{
+            background-color: #111;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+
+        }
+
+        .column{
+            float:left;
+            flex: 50%;
+            padding:0 4px;
+        }
+
+        .column img{
+            margin-top:8px;
+            vertical-align:middle;
+        }
+    </style>
+
+
     <title>
+       <h1>Main Page</h1>
     </title>
 </head>
 <body>
-  <h1>Home Page</h1>
+    <div class="container">
+        <div id=" navigation" >
+            <h1>
+                <ul>
+                    <li>GFY-Banking</li>
+                    <li>Welcome, User</li>
+                </ul>
+            </h1>
+            <h2>
+                <ul>
+
+                    <li><a href="http://127.0.0.1:8000">Go back to login</a></li>
+                    <li><a href="http://127.0.0.1:8000/account_summary">Account Summary</a></li>
+                    <li><a href="#">Manage Account</a></li>
+                </ul>
+                <br>
+
+
+
+            </h2>
+        </div>
+    </div>
+
+    <div class="container "
+        <div id=" Special_Offers"
+             <div class="row">
+                 <div class="column">
+                     <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%">
+                     <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%">
+                     <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%">
+
+                 </div>
+                 <div class="column">
+                     <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%">
+                     <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%">
+                     <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%">
+
+                 </div>
+    </div>
+    </div>
+    </div>
+    <footer class="footer">
+        <br>
+        <label>Follow us:</label>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-youtube"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <hr>
+
+        <p>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy</a>
+            <a href="#">Security</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Accessibility</a>
+            <a href="#">About GFY-Banking</a>
+            <a href="#">
+                Careers</span>
+                <a href="#">	&#9400; GFY-Banking</a>
+
+        </p>
+
+    </footer>
 </body>
 </html>

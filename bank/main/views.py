@@ -12,9 +12,12 @@ def index(request):
 def main_page(request):
     return render(request,'main/home_page.html')
 
+def account_summary(request):
+    return render(request,'main/account_summary.html')
+
 #added by Rene
 def checking_acct_page(request):
-    obj = checkingAcct.objects.get(transaction_id=1) 
+    obj = checkingAcct.objects.get(transaction_id=1)
     context = {
 
         'customer_id':obj.customer_id.customer_id.customer_id,
