@@ -1,8 +1,9 @@
+{%load static%}
 <!DOCTYPE html>
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>GFY-Banking</title>
 </head>
@@ -21,12 +22,22 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
 
-      <button type="submit">Login</button>
+      <p>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
+      </p>
 
-      <span class="psw">Forgot <a href="#">username/password?</a></span>
+
+
+      <button class ="GFG" onclick="window.location.href='http://127.0.0.1:8000/main_page';">
+        Login
+        </button>
+
+ 
+
+      <p><a class="login-bottom" href="#">Forgot username/password?</a> ></p>
+      <p><a class="login-bottom" href="#">Not Enrolled? Sign Up Now. </a> ></p>
 
     </div>
 
@@ -46,7 +57,7 @@
     <a href="#" class="fa fa-instagram"></a>
     <hr>
 
-    <p>
+    <p></p>
       <a href="#">Contact Us</a>
       <a href="#">Privacy</a>
       <a href="#">Security</a>
