@@ -5,6 +5,7 @@ from django.http import HttpResponse
 
 from .models import checkingAcct
 from .models import Accounts
+from .models import Users_bank
 
 from django.db.models import Sum
 
@@ -45,39 +46,52 @@ def manage_account(request):
 
 #added by Rene
 def checking_acct_page(request, customer_number, account_number):
-    #obj = checkingAcct.objects.all()
-    customerID = checkingAcct.objects.first()
-    account_number = customerID.account_number.account_number
-    account_balance = Accounts.objects.first().account_balance
+    
+    if request.user.is_authenticated:
+        #obj = checkingAcct.objects.all()
+        customer_found = Users_bank.objects.filter(username = request.user)
+        customer_found_id = customer_found.first().customer_id
 
-     #pull account info for the given customer number and account number
-    checking_info = checkingAcct.objects.filter(customer_id=customer_number, account_number = account_number) #checkingAcct.objects.all()
+        customerID = checkingAcct.objects.filter(customer_id = customer_found_id).first() #checkingAcct.objects.first()
+        #account_number = customerID.account_number.account_number
 
+        account_number = Accounts.objects.filter(customer_id = customer_found_id, account_type = 'checking').first().account_number
+
+        # account_balance = Accounts.objects.first().account_balance
+
+        #pull account info for the given customer number and account number
+        #checking_info = checkingAcct.objects.filter(customer_id=customer_number, account_number = account_number) #checkingAcct.objects.all()
+    
+        checking_info = checkingAcct.objects.filter(customer_id=customer_found_id, account_number = account_number)
      
-    balance = checkingAcct.objects.aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
+        #balance = checkingAcct.objects.aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
+
+        balance2 = checkingAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
     
     
      
-    if request.user.is_authenticated:
-        account_balance = balance
+       # if request.user.is_authenticated:
+        account_balance = balance2
         current_user = request.user
-    else:
-        account_balance = 300
-        current_user = request.user
+       # else:
+         #    account_balance = 300
+          #   current_user = request.user
 
 
-    context = {
-       'checking_posts': checking_info, #checkingAcct.objects.all(),
-        'customerID': customer_number,#customerID.customer_id.customer_id.customer_id,
-        'account_number': account_number,
-        'account_balance': account_balance,
-        'current_user': current_user
-    }
+        context = {
+            'checking_posts': checking_info, #checkingAcct.objects.all(),
+            'customerID': customer_number,#customerID.customer_id.customer_id.customer_id,
+            'account_number': account_number,
+            'account_balance': account_balance,
+            'current_user': current_user,
+            'customer_found': customer_found.first().customer_id #.username
+         }
 
-   # return render(request,'main/checking_acct_page.html', context)
-    if request.user.is_authenticated:
-           return render(request,'main/checking_acct_page.html', context)
-    else:
-           return render(request,'main/login.html', context)
+         # return render(request,'main/checking_acct_page.html', context)
+        if request.user.is_authenticated:
+            return render(request,'main/checking_acct_page.html', context)
+        else:
+            return render(request,'main/login.html', context)
 
+    return render(request,'main/login.html')
        
