@@ -44,9 +44,6 @@ def manage_account(request):
 ######added by Kevin ##########
 
 #added by Rene
-def checking_acct_page(request):
-    obj = checkingAcct.objects.get(transaction_id=1)
-    context = {
 def checking_acct_page(request, customer_number, account_number):
     #obj = checkingAcct.objects.all()
     customerID = checkingAcct.objects.first()
@@ -77,10 +74,10 @@ def checking_acct_page(request, customer_number, account_number):
         'current_user': current_user
     }
 
-    return render(request,'main/checking_acct_page.html', context)
+   # return render(request,'main/checking_acct_page.html', context)
     if request.user.is_authenticated:
            return render(request,'main/checking_acct_page.html', context)
     else:
-           return render(request,'main/checking_acct_page.html', context)
+           return render(request,'main/login.html', context)
 
        
