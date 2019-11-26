@@ -4,6 +4,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 from .models import checkingAcct
+from .models import Accounts
+
+from django.db.models import Sum
 
 
 ######## added by Kevin ############
@@ -44,9 +47,40 @@ def manage_account(request):
 def checking_acct_page(request):
     obj = checkingAcct.objects.get(transaction_id=1)
     context = {
+def checking_acct_page(request, customer_number, account_number):
+    #obj = checkingAcct.objects.all()
+    customerID = checkingAcct.objects.first()
+    account_number = customerID.account_number.account_number
+    account_balance = Accounts.objects.first().account_balance
 
-        'customer_id':obj.customer_id.customer_id.customer_id,
-        'vendor' : obj.vendor_name
+     #pull account info for the given customer number and account number
+    checking_info = checkingAcct.objects.filter(customer_id=customer_number, account_number = account_number) #checkingAcct.objects.all()
+
+     
+    balance = checkingAcct.objects.aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
+    
+    
+     
+    if request.user.is_authenticated:
+        account_balance = balance
+        current_user = request.user
+    else:
+        account_balance = 300
+        current_user = request.user
+
+
+    context = {
+       'checking_posts': checking_info, #checkingAcct.objects.all(),
+        'customerID': customer_number,#customerID.customer_id.customer_id.customer_id,
+        'account_number': account_number,
+        'account_balance': account_balance,
+        'current_user': current_user
     }
 
     return render(request,'main/checking_acct_page.html', context)
+    if request.user.is_authenticated:
+           return render(request,'main/checking_acct_page.html', context)
+    else:
+           return render(request,'main/checking_acct_page.html', context)
+
+       
