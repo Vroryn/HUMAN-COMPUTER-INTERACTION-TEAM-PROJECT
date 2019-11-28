@@ -1,0 +1,61 @@
+table {
+
+    /* background-color:white;*/
+
+  }
+
+  .container_table{
+      background-color:white;
+      padding: 15px;
+      border-radius: 3px;
+  }
+
+  label{
+     font-weight: bold;
+     font-size:10pt;
+     color:grey;
+  }
+
+  .dataTables_info {
+     font-weight: bold;
+     font-size: 10pt;
+     color:grey;
+  }
+
+  ul.pagination {
+     font-weight: bold;
+     /*background-color:red;*/
+     float:right;
+     font-size:10pt;
+    
+  }
+
+  .page-item.active .page-link
+  {
+    background-color:black;
+    border-color:black;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+     background-color: rgba(54,54,54,.10);
+     font-weight:bold;
+     font-size:11pt;
+ }
+ .table-striped tbody tr:nth-of-type(even) {
+     background-color: rgba(0,0,0,.05);
+     font-weight:bold;
+     font-size:11pt;
+     
+ } 
+
+ td.sorting_1 {background-color:rgba(0,0,0,.10);}
+
+ th.amount {text-align:right;}
+ th.vendor {text-align:center;}
+
+ tr.category, tfoot.category {background-color:black; color:white;}
+
+ .grey_info {color:grey;}
+
+ td.positive_money_amount {color:green; text-align:right;}
+ td.negative_money_amount {color:red; text-align:right;}

@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,9 +12,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
     
-    <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">  -->
+     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">  
     
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">  
+
+    <!-- <link rel="stylesheet" type="text/css" href="{%static 'main/account_view.css'%}" > -->
+   
 
     <!-- added by Rene-->
     <!-- Optional JavaScript -->
@@ -31,56 +34,6 @@
     <style>
 
 
-        * {
-            box-sizing: border-box;
-        }
-
-        body{
-            margin:0;
-            font-family:Arial;
-        }
-        ul.navigation_bar{
-            list-style-type: none;
-            margin:0;
-            padding:0;
-            overflow: hidden;
-            background-color: #808080;
-            /*background-color: white;*/
-        }
-        li.navigation_bar{
-            float: left;
-        }
-        li.navigation_bar{
-            display:block;
-            color:white;
-            text-align:center;
-            padding: 14px 16px;
-            text-decoration: none;
-
-        }
-
-        li.navigation_bar a:hover{
-            background-color: #111;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-
-        }
-
-        .column{
-            float:left;
-            flex: 50%;
-            padding:0 4px;
-        }
-
-        .column img{
-            margin-top:8px;
-            vertical-align:middle;
-        }
-
         {% block inlinestyle %}
           
         {% endblock inlinestyle %}
@@ -93,40 +46,36 @@
 </head>
 <body>
     
-   
-        <div id=" navigation" >
-            <h1>
-                <ul class="navigation_bar">
-                    <li class="navigation_bar">GFY-Banking</li>
-                    <li class="navigation_bar">Welcome, User</li>
-                </ul>
-            </h1>
-            <h2>
-                <ul class="navigation_bar">
-
-                    <li class="navigation_bar"><a href="http://127.0.0.1:8000">Go back to login</a></li>
-                    <li class="navigation_bar"><a href="http://127.0.0.1:8000/main_page">Go to main page</a><li>
-                    <li class="navigation_bar"><a href="http://127.0.0.1:8000/account_summary">Account Summary</a></li>
-                    <li class="navigation_bar"><a href="#">Manage Account</a></li>
-                </ul>
-                <br>
-
-
-
-            </h2>
+        <div class="container">
+                <div id=" navigation">
+                    <h1>
+                        
+                                <label class="bank_title">GFY-Banking</label>
+                               
+                      
+                    </h1>
+                    <h2>
+                    <div id="navigation-options">
+                    <hr>
+                    <label class="menu_label"><a class = "menu_link" href="http://127.0.0.1:8000">Go back to login</a></label>
+                    <label class="menu_label"><a class = "menu_link" href="http://127.0.0.1:8000/main_page">Go to main page</a></label>
+                    <label class="menu_label"><a class = "menu_link" href="http://127.0.0.1:8000/account_summary">Account Summary</a></label>
+                    <label class="menu_label"><a class = "menu_link" href="{% url 'manage account'%}">Manage Account</a></label>
+                    <hr>
+                    </div>
+                    </h2>
+                    <br>
+                </div>
         </div>
     
 
     <div class="container "> 
       {% block content %}
-
-
-
-
-
-
       {% endblock %}
     </div>  
+
+
+
     <footer class="footer">
         <br>
         <label>Follow us:</label>
@@ -152,5 +101,23 @@
         </p>
 
     </footer>
+
+
+    <script>
+            window.onscroll = function() {myFunction()};
+            
+            var navbar = document.getElementById("navbar");
+            var sticky = navbar.offsetTop;
+            
+            function myFunction() {
+              if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+              } else {
+                navbar.classList.remove("sticky");
+              }
+            }
+    </script>
+
+    
 </body>
 </html>

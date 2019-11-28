@@ -72,14 +72,20 @@ ul {
 }
 
 
-li { 
+li.menu_label { 
     float: left;
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+   
 
+}
+
+li.bank_title
+{
+   font-size: 30pt; 
 }
 
 /* li a:hover {
@@ -109,3 +115,11 @@ li {
 img {
     width: 30%;
 }
+
+a.menu_link
+{
+    font-size: 12pt; 
+}
+
+
+/*added by Rene*/
