@@ -45,14 +45,21 @@ def manage_account(request):
 ######added by Kevin ##########
 
 #added by Rene
-def checking_acct_page(request, customer_number, account_number):
+def checking_acct_page(request, customer_number=1, account_number=1):
     
     if request.user.is_authenticated:
         #obj = checkingAcct.objects.all()
+
+          #find the customer in the Users_bank table
         customer_found = Users_bank.objects.filter(username = request.user)
+          #extract the customer id from the found user object.
         customer_found_id = customer_found.first().customer_id
 
+        
+        #grab checking account transactions for this customer id 
         customerID = checkingAcct.objects.filter(customer_id = customer_found_id).first() #checkingAcct.objects.first()
+        
+        
         #account_number = customerID.account_number.account_number
 
         account_number = Accounts.objects.filter(customer_id = customer_found_id, account_type = 'checking').first().account_number
@@ -66,12 +73,12 @@ def checking_acct_page(request, customer_number, account_number):
      
         #balance = checkingAcct.objects.aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
 
-        balance2 = checkingAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
+        balance = checkingAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
     
     
      
        # if request.user.is_authenticated:
-        account_balance = balance2
+        account_balance = balance
         current_user = request.user
        # else:
          #    account_balance = 300
@@ -80,11 +87,11 @@ def checking_acct_page(request, customer_number, account_number):
 
         context = {
             'checking_posts': checking_info, #checkingAcct.objects.all(),
-            'customerID': customer_number,#customerID.customer_id.customer_id.customer_id,
+            'customerID': customer_found_id,#customer_number,#customerID.customer_id.customer_id.customer_id,
             'account_number': account_number,
             'account_balance': account_balance,
             'current_user': current_user,
-            'customer_found': customer_found.first().customer_id #.username
+            'customer_found': customer_found_id #.username
          }
 
          # return render(request,'main/checking_acct_page.html', context)

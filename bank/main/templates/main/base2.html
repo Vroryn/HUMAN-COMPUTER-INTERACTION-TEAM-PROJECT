@@ -1,0 +1,156 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    
+    <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">  -->
+    
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">  
+
+    <!-- added by Rene-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- added by Rene-->
+
+    <style>
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body{
+            margin:0;
+            font-family:Arial;
+        }
+        ul.navigation_bar{
+            list-style-type: none;
+            margin:0;
+            padding:0;
+            overflow: hidden;
+            background-color: #808080;
+            /*background-color: white;*/
+        }
+        li.navigation_bar{
+            float: left;
+        }
+        li.navigation_bar{
+            display:block;
+            color:white;
+            text-align:center;
+            padding: 14px 16px;
+            text-decoration: none;
+
+        }
+
+        li.navigation_bar a:hover{
+            background-color: #111;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+
+        }
+
+        .column{
+            float:left;
+            flex: 50%;
+            padding:0 4px;
+        }
+
+        .column img{
+            margin-top:8px;
+            vertical-align:middle;
+        }
+
+        {% block inlinestyle %}
+          
+        {% endblock inlinestyle %}
+    </style>
+
+
+    <title>
+       Main Page
+    </title>
+</head>
+<body>
+    
+   
+        <div id=" navigation" >
+            <h1>
+                <ul class="navigation_bar">
+                    <li class="navigation_bar">GFY-Banking</li>
+                    <li class="navigation_bar">Welcome, User</li>
+                </ul>
+            </h1>
+            <h2>
+                <ul class="navigation_bar">
+
+                    <li class="navigation_bar"><a href="http://127.0.0.1:8000">Go back to login</a></li>
+                    <li class="navigation_bar"><a href="http://127.0.0.1:8000/main_page">Go to main page</a><li>
+                    <li class="navigation_bar"><a href="http://127.0.0.1:8000/account_summary">Account Summary</a></li>
+                    <li class="navigation_bar"><a href="#">Manage Account</a></li>
+                </ul>
+                <br>
+
+
+
+            </h2>
+        </div>
+    
+
+    <div class="container "> 
+      {% block content %}
+
+
+
+
+
+
+      {% endblock %}
+    </div>  
+    <footer class="footer">
+        <br>
+        <label>Follow us:</label>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-youtube"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <hr>
+
+        <p>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy</a>
+            <a href="#">Security</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Accessibility</a>
+            <a href="#">About GFY-Banking</a>
+            <a href="#">
+                Careers</span>
+                <a href="#">	&#9400; GFY-Banking</a>
+
+        </p>
+
+    </footer>
+</body>
+</html>

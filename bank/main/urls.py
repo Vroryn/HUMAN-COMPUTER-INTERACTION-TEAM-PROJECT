@@ -17,5 +17,7 @@ path("promotion_6/",views.promotion_6,name ="promotion 6"),
 path("manage_account/",views.manage_account,name = "manage account"),
 path("account_summary/",views.account_summary,name="account summary"),
 #path("checking_acct_page/", checking_acct_page, name = "checking_acct_page") #added by rene
-path("main_page/<int:customer_number>/<int:account_number>/checking_acct_page/", views.checking_acct_page, name = "checking_acct_page") #added by rene 11/24/19
+path("main_page/checking_acct_page/", views.checking_acct_page, name = "checking_acct_page"),
+path("main_page/<int:customer_number>/<int:account_number>/checking_acct_page/", views.checking_acct_page, name = "checking_acct_page"), #added by rene 11/24/19
+
 ]
