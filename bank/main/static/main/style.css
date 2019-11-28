@@ -9,6 +9,7 @@ body {
 
 h1 {
     text-align: center;
+    color:#006400;
 }
 
 .container {
@@ -49,8 +50,29 @@ ul {
     background-color: #006400;
 }
 
+#navigation-options{
+    margin: 0;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    overflow: hidden;
+    text-align: center;
 
-li {
+}
+
+#navigation-options>label{
+    margin-left: 1%;
+}
+
+#navigation-options>label>a{
+        color:  #006400;
+        text-decoration: none;
+}
+
+#navigation-options>label>a:hover {
+  opacity: 0.5;
+}
+
+
+li { 
     float: left;
     display: block;
     color: white;
@@ -60,9 +82,9 @@ li {
 
 }
 
-li a:hover {
+/* li a:hover {
     background-color: #111;
-}
+} */
 
 * {
     box-sizing: border-box;
