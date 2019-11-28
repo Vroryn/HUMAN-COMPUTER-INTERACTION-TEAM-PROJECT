@@ -1,70 +1,18 @@
 {%load static%}
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body{
-            margin:0;
-            font-family:Arial;
-        }
-        ul{
-            list-style-type: none;
-            margin:0;
-            padding:0;
-            overflow: hidden;
-            background-color: #808080;
-        }
-        li{
-            float: left;
-        }
-        li{
-            display:block;
-            color:white;
-            text-align:center;
-            padding: 14px 16px;
-            text-decoration: none;
-
-        }
-
-        li a:hover{
-            background-color: #111;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-
-        }
-
-        .column{
-            float:left;
-            flex: 50%;
-            padding:0 4px;
-        }
-
-        .column img{
-            margin-top:8px;
-            vertical-align:middle;
-        }
-    </style>
-
-
     <title>
-       <h1>Main Page</h1>
+        <h1>Main Page</h1>
     </title>
 </head>
+
 <body>
     <div class="container">
-        <div id=" navigation" >
+        <div id=" navigation">
             <h1>
                 <ul>
                     <li>GFY-Banking</li>
@@ -75,7 +23,8 @@
                 <ul>
 
                     <li><a href="http://127.0.0.1:8000">Go back to login</a></li>
-                    <li><a href="http://127.0.0.1:8000/main_page">Go to main page</a><li>
+                    <li><a href="http://127.0.0.1:8000/main_page">Go to main page</a>
+                    <li>
                     <li><a href="http://127.0.0.1:8000/account_summary">Account Summary</a></li>
                     <li><a href="#">Manage Account</a></li>
                 </ul>
@@ -88,8 +37,8 @@
     </div>
 
     <div class="container ">
-      {% block content %}
-      {% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
     <footer class="footer">
         <br>
@@ -111,10 +60,11 @@
             <a href="#">About GFY-Banking</a>
             <a href="#">
                 Careers</span>
-                <a href="#">	&#9400; GFY-Banking</a>
+                <a href="#"> &#9400; GFY-Banking</a>
 
         </p>
 
     </footer>
 </body>
+
 </html>

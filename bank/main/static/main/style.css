@@ -11,7 +11,6 @@ h1 {
 
 .container {
     flex: 1 0 auto;
-
 }
 
 button:hover {
@@ -38,4 +37,50 @@ hr {
     height: 1px;
     border: 0;
     width: 80%
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #006400;
+}
+
+
+li {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+
+.column {
+    float: left;
+    flex: 50%;
+    padding: 0 4px;
+}
+
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
 }
