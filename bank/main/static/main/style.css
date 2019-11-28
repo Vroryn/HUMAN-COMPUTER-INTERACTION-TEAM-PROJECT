@@ -3,62 +3,17 @@ body {
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-}
-
-
-
-h1 {
-    text-align: center;
-}
-
-body {
-    background-image: url(/static/main/ocean.jpg);
     display: flex;
     flex-direction: column;
 }
 
+h1 {
+    text-align: center;
+    color:#006400;
+}
+
 .container {
     flex: 1 0 auto;
-    
-}
-
-#login-container {
-    background-color: #fefefe;
-    margin: 8% auto -5% auto;
-    /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    padding: 10px;
-    width: 30%;
- 
-    /* Could be more or less, depending on screen size */
-}
-
-
-form {
-    border: 3px solid #f1f1f1;
-}
-
-input[type=text],
-input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    margin-right: 2%;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-
 }
 
 button:hover {
@@ -66,24 +21,91 @@ button:hover {
 }
 
 footer {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     text-align: center;
     flex-shrink: 0;
     flex-wrap: nowrap;
-    
 
 }
 
-.footer > a, .footer > p > a {
+.footer>a,
+.footer>p>a {
     margin-left: 0.5%;
     color: black;
     text-decoration: none;
 }
 
-hr { background-color: black; height: 1px; border: 0; width: 80% }
+hr {
+    background-color: black;
+    height: 1px;
+    border: 0;
+    width: 80%
+}
 
-.login-bottom{
-    
-    color: blue;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #006400;
+}
+
+#navigation-options{
+    margin: 0;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    overflow: hidden;
+    text-align: center;
+
+}
+
+#navigation-options>label{
+    margin-left: 1%;
+}
+
+#navigation-options>label>a{
+        color:  #006400;
+        text-decoration: none;
+}
+
+#navigation-options>label>a:hover {
+  opacity: 0.5;
+}
+
+
+li { 
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
+
+}
+
+/* li a:hover {
+    background-color: #111;
+} */
+
+* {
+    box-sizing: border-box;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+
+.column {
+
+ text-align: center;
+
+} 
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+}
+
+img {
+    width: 30%;
 }

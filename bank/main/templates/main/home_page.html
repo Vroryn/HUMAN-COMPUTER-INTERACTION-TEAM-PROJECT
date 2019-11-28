@@ -1,107 +1,63 @@
 {%load static%}
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body{
-            margin:0;
-            font-family:Arial;
-        }
-        ul{
-            list-style-type: none;
-            margin:0;
-            padding:0;
-            overflow: hidden;
-            background-color: #808080;
-        }
-        li{
-            float: left;
-        }
-        li{
-            display:block;
-            color:white;
-            text-align:center;
-            padding: 14px 16px;
-            text-decoration: none;
-
-        }
-
-        li a:hover{
-            background-color: #111;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-
-        }
-
-        .column{
-            float:left;
-            flex: 50%;
-            padding:0 4px;
-        }
-
-        .column img{
-            margin-top:8px;
-            vertical-align:middle;
-        }
-    </style>
-
-
     <title>
-       <h1>Main Page</h1>
+            GFY-Banking Homepage
     </title>
 </head>
+
 <body>
     <div class="container">
-        <div id=" navigation" >
+        <div id=" navigation">
             <h1>
-                <ul>
-                    <li>GFY-Banking</li>
-                    <li>Welcome, User</li>
-                </ul>
+                
+                        <label>GFY-Banking</label>
+                       
+              
             </h1>
             <h2>
-                <ul>
-
-                    <li><a href="http://127.0.0.1:8000">Go back to login</a></li>
-                    <li><a href="http://127.0.0.1:8000/main_page">Go to main page</a><li>
-                    <li><a href="http://127.0.0.1:8000/account_summary">Account Summary</a></li>
-                    <li><a href="{% url 'manage account'%}">Manage Account</a></li>
-                </ul>
-                <br>
-
-
-
+            <div id="navigation-options">
+            <hr>
+            <label><a href="http://127.0.0.1:8000">Go back to login</a></label>
+            <label><a href="http://127.0.0.1:8000/main_page">Go to main page</a></label>
+            <label><a href="http://127.0.0.1:8000/account_summary">Account Summary</a></label>
+            <label><a href="{% url 'manage account'%}">Manage Account</a></label>
+            <hr>
+            </div>
             </h2>
+            <br>
         </div>
     </div>
 
-    <div class="container "
-        <div id=" Special_Offers"
-             <div class="row">
-                 <div class="column">
-                     <a href ="http://127.0.0.1:8000/promotion_1"><img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%"></a>
-                     <a href ="http://127.0.0.1:8000/promotion_2"><img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%"></a>
-                     <a href ="http://127.0.0.1:8000/promotion_3"><img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%"></a>
+    <div class="container " <div id=" Special_Offers" <div class="row">
+        <div class="column">
+            <a href="http://127.0.0.1:8000/promotion_1"><img
+                    src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg"
+                    ></a>
+            <a href="http://127.0.0.1:8000/promotion_2"><img
+                    src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg"
+                   ></a>
+            <a href="http://127.0.0.1:8000/promotion_3"><img
+                    src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg"
+                   ></a>
 
-                 </div>
-                 <div class="column">
-                    <a href ="http://127.0.0.1:8000/promotion_4"> <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%"></a>
-                    <a href ="http://127.0.0.1:8000/promotion_5"> <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%"></a>
-                    <a href ="http://127.0.0.1:8000/promotion_6"> <img src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg" style="width:30%"></a>
+        </div>
+        <div class="column">
+            <a href="http://127.0.0.1:8000/promotion_4"> <img
+                    src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg"
+                   ></a>
+            <a href="http://127.0.0.1:8000/promotion_5"> <img
+                    src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg"
+                    ></a>
+            <a href="http://127.0.0.1:8000/promotion_6"> <img
+                    src="https://image.shutterstock.com/image-photo/blank-mock-vertical-street-poster-600w-425371828.jpg"
+                    ></a>
 
-                 </div>
+        </div>
     </div>
     </div>
     </div>
@@ -125,10 +81,11 @@
             <a href="#">About GFY-Banking</a>
             <a href="#">
                 Careers</span>
-                <a href="#">	&#9400; GFY-Banking</a>
+        <a href="#"> &#9400; GFY-Banking</a>
 
         </p>
 
     </footer>
 </body>
+
 </html>
