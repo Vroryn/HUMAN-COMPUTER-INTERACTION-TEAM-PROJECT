@@ -60,6 +60,7 @@ ul {
 
 #navigation-options>label{
     margin-left: 1%;
+   
 }
 
 #navigation-options>label>a{
@@ -123,3 +124,7 @@ a.menu_link
 
 
 /*added by Rene*/
+a.login_link
+{
+    font-weight:bold;
+}

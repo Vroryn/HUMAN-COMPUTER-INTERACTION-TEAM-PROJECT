@@ -1,99 +1,101 @@
 {%load static%}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
-
 <head>
-  <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <style>
-    body {
-      background-image: url(/static/main/ocean.jpg);
-      background-size: 100% 100%;
-     }
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    .login-bottom {
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    
+     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">  
+    
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">  
 
-      color: blue;
-      text-decoration: none;
-    }
+     <link rel="stylesheet" type="text/css" href="{%static 'main/account_view.css'%}" > 
+   
 
-    #login-container {
-      background-color: #fefefe;
-      margin: 5% auto auto auto;
-      border: 1px solid #888;
-      padding: 10px;
-      width: 30%;
-      border-radius: 1% 1% 1% 1%;
-    }
+    <!-- added by Rene-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    form {
-      border: 3px solid #f1f1f1;
-    }
 
-    input[type=text],
-    input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- added by Rene-->
 
-    button {
-      background-color: #006400;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      margin-right: 2%;
-      border: none;
-      cursor: pointer;
-      width: 100%;
+    <style>
 
-    }
-  </style>
+      .content-section
+      {
+        padding: 15px 15px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 3px;
+        border-color: #17a2b8;
+        background-color: #e3fced;
+        margin-top: 10%;
+        color: #17a2b8;
+        
+      }
 
-  <title>GFY-Banking Login</title>
+      ul {background-color:transparent;}
+       
+    </style>
+
+
+    <title>
+       Login
+    </title>
 </head>
-
 <body>
-  <div class="container">
 
-    <div id="login-container">
+  {% if messages %}
+      {% for message in messages %}
+         <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+         </div>
+      {% endfor %}
+  {% endif %}
 
-      <h1>GFY-Banking</h1>
+   <h1>GFY New User Registration</h1>
 
+   <div class = "container">
+     <div class="content-section">
+           <form method="POST">
+                {% csrf_token %}
+                     <fieldset class="form-group">
+                     <legend class="border-bottom mb-4">Join Today</legend>
+                          <!--{{ form.as_p }} -->
+                        {{ form|crispy }}
+                      </fieldset>
+                      <div class="form-group">
+                           <button class="btn btn-outline-info" type="submit">Login</button>
+                       </div>
+            </form>
 
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <p>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </p>
-
-
-
-      <button class="GFG" onclick="window.location.href='http://127.0.0.1:8000/main_page';">
-        Login
-      </button>
-
-
-
-      <p><a class="login-bottom" href="#">Forgot username/password?</a> ></p>
-      <p><a class="login-bottom" href="#">Not Enrolled? Sign Up Now. </a> ></p>
-
-    </div>
+       <div class="border-top pt-3">
+           <small class="text-muted">
+              Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+           </small>
+       </div>
+     </div>
+   </div>
 
 
 
 
-  </div>
+  
+
+
 
   <footer class="footer">
     <br>

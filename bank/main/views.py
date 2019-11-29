@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+#from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 # allows http requests
 from django.http import HttpResponse
 # Create your views here.
@@ -9,12 +11,29 @@ from .models import Users_bank
 
 from django.db.models import Sum
 
+from .forms import UserRegisterForm #custom class for forms, added by Rene
+
 
 ######## added by Kevin ############
 def index(request):
     #HttpResponse takes html code as parameter
     return render(request,'main/login.html')
 
+####### addedy by Rene #######
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Your account has been created! You are now able to log in.')
+            return redirect('login')
+    else:
+        form =  UserRegisterForm()
+    return render(request,'main/register.html', {'form': form})
+
+####### end #############
 def main_page(request):
     return render(request,'main/home_page.html')
 
@@ -100,5 +119,5 @@ def checking_acct_page(request, customer_number=1, account_number=1):
         else:
             return render(request,'main/login.html', context)
 
-    return render(request,'main/login.html')
+    return redirect('login')
        

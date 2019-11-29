@@ -16,7 +16,7 @@
     
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">  
 
-    <!-- <link rel="stylesheet" type="text/css" href="{%static 'main/account_view.css'%}" > -->
+     <link rel="stylesheet" type="text/css" href="{%static 'main/account_view.css'%}" > 
    
 
     <!-- added by Rene-->
@@ -41,32 +41,49 @@
 
 
     <title>
-       Main Page
+       {% block title%}{% endblock title%}
     </title>
 </head>
 <body>
-    
-        <div class="container">
+
+  {% if messages %}
+      {% for message in messages %}
+         <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+         </div>
+      {% endfor %}
+  {% endif %}
+
+
+       <div class="sticky-top">
                 <div id=" navigation">
                     <h1>
                         
                                 <label class="bank_title">GFY-Banking</label>
-                               
-                      
                     </h1>
                     <h2>
                     <div id="navigation-options">
                     <hr>
-                    <label class="menu_label"><a class = "menu_link" href="http://127.0.0.1:8000">Go back to login</a></label>
-                    <label class="menu_label"><a class = "menu_link" href="http://127.0.0.1:8000/main_page">Go to main page</a></label>
-                    <label class="menu_label"><a class = "menu_link" href="http://127.0.0.1:8000/account_summary">Account Summary</a></label>
-                    <label class="menu_label"><a class = "menu_link" href="{% url 'manage account'%}">Manage Account</a></label>
+                   <!--  <label class="menu_label"><a class = "menu_link" href="{% url 'login' %}">Go back to login</a></label> -->
+                    <label class="menu_label"><a class = "menu_link" href="{% url 'main page' %}">Home</a></label>
+                    <label class="menu_label"><a class = "menu_link" href="{% url 'account summary' %}">Account Summary</a></label>
+                    <label class="menu_label"><a class = "menu_link" href="{% url 'checking_acct_page' %}">Checking</a></label>
+                    <label class="menu_label"><a class = "menu_link" href="{% url 'manage account' %}">Manage Account</a></label>
+
+                    {% if user.is_authenticated %}
+                       <label class="menu_label"><a class = "login_link" href="{% url 'logout' %}">[ Logout : {{user.username}} ]</a></label>
+                    {% else %}
+                    <label class="menu_label"><a class = "login_link" href="{% url 'login' %}">[ Login </a>|<a class = "login_link" href="{% url 'register' %}"> Register ]</a></label>
+                   
+                    {% endif %}
+
                     <hr>
                     </div>
                     </h2>
                     <br>
                 </div>
-        </div>
+       </div>
+       
     
 
     <div class="container "> 
@@ -103,21 +120,5 @@
     </footer>
 
 
-    <script>
-            window.onscroll = function() {myFunction()};
-            
-            var navbar = document.getElementById("navbar");
-            var sticky = navbar.offsetTop;
-            
-            function myFunction() {
-              if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-              } else {
-                navbar.classList.remove("sticky");
-              }
-            }
-    </script>
-
-    
 </body>
 </html>
