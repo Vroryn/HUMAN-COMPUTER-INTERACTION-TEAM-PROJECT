@@ -66,6 +66,7 @@ ul {
 #navigation-options>label>a{
         color:  #006400;
         text-decoration: none;
+        font-size: 0.9em;
 }
 
 #navigation-options>label>a:hover {
@@ -80,7 +81,6 @@ li.menu_label {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-   
 
 }
 
