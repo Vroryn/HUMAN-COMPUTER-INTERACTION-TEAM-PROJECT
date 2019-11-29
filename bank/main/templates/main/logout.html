@@ -1,0 +1,22 @@
+{% extends 'main/base2.html'%} 
+
+{% block inlinestyle %}
+   ul {
+       background-color:white;
+   }          
+
+{% endblock %}
+
+{% block page_title%} GFY: Register {% endblock page_title%}
+      
+
+{% block content %}
+   <h2>You have been logged out.</h2>
+
+
+       <div class="border-top pt-3">
+           <small class="text-muted">
+              <a href="{% url 'login' %}">Log In Again</a>
+       </div>
+  
+{% endblock content%}

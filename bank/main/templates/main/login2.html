@@ -1,0 +1,124 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    body {
+     /* background-image: url(/static/main/ocean.jpg);
+      background-size: 100% 100%;*/
+     }
+
+    .login-bottom {
+
+      color: blue;
+      text-decoration: none;
+    }
+
+    #login-container {
+      background-color: #fefefe;
+      margin: 5% auto auto auto;
+      border: 1px solid #888;
+      padding: 10px;
+      width: 30%;
+      border-radius: 1% 1% 1% 1%;
+    }
+
+    form {
+      border: 3px solid #f1f1f1;
+    }
+
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #006400;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      margin-right: 2%;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+
+    }
+  </style>
+
+  <title>GFY-Banking Login</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <div id="login-container">
+
+      <h1>GFY-Banking</h1>
+
+
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <p>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </p>
+
+
+
+      <button class="GFG" onclick="window.location.href='http://127.0.0.1:8000/main_page';">
+        Login
+      </button>
+
+
+
+      <p><a class="login-bottom" href="#">Forgot username/password?</a> ></p>
+      <p><a class="login-bottom" href="#">Not Enrolled? Sign Up Now. </a> ></p>
+
+    </div>
+
+
+
+
+  </div>
+
+  <footer class="footer">
+    <br>
+    <label>Follow us:</label>
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    <a href="#" class="fa fa-google"></a>
+    <a href="#" class="fa fa-linkedin"></a>
+    <a href="#" class="fa fa-youtube"></a>
+    <a href="#" class="fa fa-instagram"></a>
+    <hr>
+
+    <p></p>
+    <a href="#">Contact Us</a>
+    <a href="#">Privacy</a>
+    <a href="#">Security</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Accessibility</a>
+    <a href="#">About GFY-Banking</a>
+    <a href="#">Careers</span>
+      <a href="#"> &#9400; GFY-Banking</a>
+
+      </p>
+
+  </footer>
+</body>
+
+</html>
