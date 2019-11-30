@@ -8,10 +8,12 @@ from django.http import HttpResponse
 from .models import checkingAcct
 from .models import Accounts
 from .models import Users_bank
+from .models import Customers_List
 
 from django.db.models import Sum
 
 from .forms import UserRegisterForm #custom class for forms, added by Rene
+from .forms import Profile_Edit_Form
 
 
 ######## added by Kevin ############
@@ -120,4 +122,60 @@ def checking_acct_page(request, customer_number=1, account_number=1):
             return render(request,'main/login.html', context)
 
     return redirect('login')
+
+def profile_view(request):
+    if request.user.is_authenticated:
+         
+         #find the customer in the Users_bank table
+        customer_found = Users_bank.objects.filter(username = request.user)
+          #extract the customer id from the found user object.
+        customer_found_id = customer_found.first().customer_id
+
+        customer_info = Customers_List.objects.filter(customer_id = customer_found_id).first() #checkingAcct.objects.first()
+
+    
+        context = {
+            'username' : request.user,
+            'customer_info' : customer_info,
+        }
+        return render(request, 'main/profile.html', context)
+    else:
+        return redirect('login')
+
+def profile_edit_view(request):
+    if request.user.is_authenticated:
+
+        customer_found = Users_bank.objects.filter(username = request.user)
+        customer_found_id = customer_found.first().customer_id
+        customer_info = Customers_List.objects.filter(customer_id = customer_found_id).first()
+
+        user_id = Customers_List.objects.get(pk=customer_info.id) #current session instance to get current user
+
+        if request.method == 'POST':
+            form = Profile_Edit_Form(request.POST, instance=user_id)
+
+            if form.is_valid():
+                form.save()
+                messages.success(request, f'Your profile information was updated.')
+                return redirect('profile')
+
+        else:
+            data = {
+               # 'id' : customer_info.id,
+                'customer_id': customer_found_id,
+                'first_name': customer_info.first_name,
+                'middle_name': customer_info.middle_name,
+                'last_name' : customer_info.last_name,
+                'address': customer_info.address,
+                'city' : customer_info.city,
+                'state' : customer_info.state,
+                'zipcode': customer_info.zipcode,
+                'phone_number': customer_info.phone_number
+                }
+            form = Profile_Edit_Form(data)
+            args = {'form': form}
+            return render(request, 'main/profile_edit.html', args)
+        #return redirect('login')
+    else:
+        return redirect('login')
        

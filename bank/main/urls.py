@@ -36,4 +36,7 @@ path("account_summary/",views.account_summary,name="account summary"),
 path("main_page/checking_acct_page/", views.checking_acct_page, name = "checking_acct_page"),
 path("main_page/<int:customer_number>/<int:account_number>/checking_acct_page/", views.checking_acct_page, name = "checking_acct_page"), #added by rene 11/24/19
 
+path("main_page/profile/", views.profile_view, name="profile"),
+path("main_page/profile/edit/", views.profile_edit_view, name="profile_edit"),
+
 ]
