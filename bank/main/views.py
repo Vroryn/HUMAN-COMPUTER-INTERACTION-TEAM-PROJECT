@@ -6,14 +6,17 @@ from django.http import HttpResponse
 # Create your views here.
 
 from .models import checkingAcct
+from .models import credit_cardAcct
 from .models import Accounts
 from .models import Users_bank
 from .models import Customers_List
+from .models import savingsAcct
 
 from django.db.models import Sum
 
 from .forms import UserRegisterForm #custom class for forms, added by Rene
 from .forms import Profile_Edit_Form
+
 
 
 ######## added by Kevin ############
@@ -37,6 +40,36 @@ def register(request):
 
 ####### end #############
 def main_page(request):
+    if request.user.is_authenticated:
+         
+         
+        customer_found = Users_bank.objects.filter(username = request.user) #find the customer in the Users_bank table
+       
+        customer_found_id = customer_found.first().customer_id    #extract the customer id from the found user object.
+
+        customer_info = Customers_List.objects.filter(customer_id = customer_found_id).first() #checkingAcct.objects.first()
+
+        account_number_checking = Accounts.objects.filter(customer_id = customer_found_id, account_type = 'checking').first().account_number
+        account_number_credit = Accounts.objects.filter(customer_id = customer_found_id, account_type = 'credit_card').first().account_number
+        account_number_savings = Accounts.objects.filter(customer_id = customer_found_id, account_type = 'savings').first().account_number
+
+        checking_info = checkingAcct.objects.filter(customer_id=customer_found_id, account_number = account_number_checking)
+        checking_balance = checkingAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum'] 
+
+        credit_info = credit_cardAcct.objects.filter(customer_id=customer_found_id, account_number = account_number_credit)
+        credit_card_balance = credit_cardAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum']
+
+        savings_info = savingsAcct.objects.filter(customer_id=customer_found_id, account_number = account_number_savings)
+        savings_balance = savingsAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum']
+
+
+
+
+        request.session['checking_account_balance'] = str(checking_balance)
+        request.session['savings_account_balance'] = str(savings_balance)
+        request.session['credit_card_account_balance'] = str(credit_card_balance)
+
+
     return render(request,'main/home_page.html')
 
 def account_summary(request):
@@ -118,6 +151,91 @@ def checking_acct_page(request, customer_number=1, account_number=1):
          # return render(request,'main/checking_acct_page.html', context)
         if request.user.is_authenticated:
             return render(request,'main/checking_acct_page.html', context)
+        else:
+            return render(request,'main/login.html', context)
+
+    return redirect('login')
+
+def creditcard_acct_page(request, customer_number=1, account_number=1):
+    
+    if request.user.is_authenticated:
+
+          #find the customer in the Users_bank table
+        customer_found = Users_bank.objects.filter(username = request.user)
+          #extract the customer id from the found user object.
+        customer_found_id = customer_found.first().customer_id
+
+        
+        #grab checking account transactions for this customer id 
+        customerID = credit_cardAcct.objects.filter(customer_id = customer_found_id).first() #credit_cardAcct.objects.first()
+
+        account_number = Accounts.objects.filter(customer_id = customer_found_id, account_type = 'credit_card').first().account_number
+
+        credit_info = credit_cardAcct.objects.filter(customer_id=customer_found_id, account_number = account_number)
+     
+        balance = credit_cardAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
+    
+    
+     
+       # if request.user.is_authenticated:
+        account_balance = balance
+        current_user = request.user
+      
+        context = {
+            'credit_posts': credit_info, #checkingAcct.objects.all(),
+            'customerID': customer_found_id,#customer_number,#customerID.customer_id.customer_id.customer_id,
+            'account_number': account_number,
+            'account_balance': account_balance,
+            'current_user': current_user,
+            'customer_found': customer_found_id #.username
+         }
+
+         # return render(request,'main/checking_acct_page.html', context)
+        if request.user.is_authenticated:
+            return render(request,'main/creditcard_acct_page.html', context)
+        else:
+            return render(request,'main/login.html', context)
+
+    return redirect('login')
+
+
+def savings_acct_page(request, customer_number=1, account_number=1):
+    
+    if request.user.is_authenticated:
+
+          #find the customer in the Users_bank table
+        customer_found = Users_bank.objects.filter(username = request.user)
+          #extract the customer id from the found user object.
+        customer_found_id = customer_found.first().customer_id
+
+        
+        #grab checking account transactions for this customer id 
+        customerID = savingsAcct.objects.filter(customer_id = customer_found_id).first() 
+
+        account_number = Accounts.objects.filter(customer_id = customer_found_id, account_type = 'savings').first().account_number
+
+        savings_info = savingsAcct.objects.filter(customer_id=customer_found_id, account_number = account_number)
+     
+        balance = savingsAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum'] #sums all the amounts and returns the value from the dictionary returned
+    
+    
+     
+       # if request.user.is_authenticated:
+        account_balance = balance
+        current_user = request.user
+      
+        context = {
+            'savings_posts': savings_info, #checkingAcct.objects.all(),
+            'customerID': customer_found_id,#customer_number,#customerID.customer_id.customer_id.customer_id,
+            'account_number': account_number,
+            'account_balance': account_balance,
+            'current_user': current_user,
+            'customer_found': customer_found_id #.username
+         }
+
+         # return render(request,'main/checking_acct_page.html', context)
+        if request.user.is_authenticated:
+            return render(request,'main/savings_acct_page.html', context)
         else:
             return render(request,'main/login.html', context)
 

@@ -68,4 +68,53 @@ ul.pagination {background-color:white;}
 
 .jumbotron {background-color:#e3fced; padding: 10px 10px;}
 
-.sticky-top {background-color:white; height:175px;}
+.sticky-top {
+    background-color:white; 
+    height:175px;
+    /*z-index: 1;*/
+}
+
+.dropdown {
+    position: static;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    font-size: 12pt;
+    background-color: #e3fced;/*#f9f9f9;*/
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+   /* text-align:right;*/
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    
+  }
+a.account_link {
+    color:#17a2b8;
+    font-weight:bold;
+}
+
+#balance_amount {
+    color: grey;
+    margin-left:10px;
+    float:right;
+}
+
+#account_title
+{
+  /*text-align:left;*/
+  /*color:green;*/
+ /* margin-right:50px;*/
+ /* border-style:solid;
+  border-width:0px;
+  border-color:red;*/
+  
+}
+
+

@@ -8,6 +8,8 @@ from .models import Users_bank
 from .models import Customers_List
 from .models import Accounts
 from .models import checkingAcct
+from .models import credit_cardAcct
+from .models import savingsAcct
 # Register your models here.
 
 
@@ -19,3 +21,5 @@ admin.site.register(Users_bank)
 admin.site.register(Customers_List)
 admin.site.register(Accounts)
 admin.site.register(checkingAcct)
+admin.site.register(credit_cardAcct)
+admin.site.register(savingsAcct)

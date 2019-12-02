@@ -81,6 +81,26 @@ class checkingAcct(models.Model):
     transaction_date = models.DateField(null = True)
     type_category = models.CharField(max_length = 100, null = True, default = 'unknown')
     transaction_type = models.CharField(max_length = 100, null = True, default = 'debit')
+
+class credit_cardAcct(models.Model):
+    transaction_id = models.AutoField(primary_key = True)
+    customer_id = models.ForeignKey(Customers_List, on_delete=models.CASCADE)
+    account_number = models.ForeignKey(Accounts, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=13, decimal_places = 2, null = True)
+    description = models.CharField(max_length = 250)
+    transaction_date = models.DateField(null = True)
+    type_category = models.CharField(max_length = 100, null = True, default = 'unknown')
+    transaction_type = models.CharField(max_length = 100, null = True, default = 'debit')
+
+class savingsAcct(models.Model):
+    transaction_id = models.AutoField(primary_key = True)
+    customer_id = models.ForeignKey(Customers_List, on_delete=models.CASCADE)
+    account_number = models.ForeignKey(Accounts, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=13, decimal_places = 2, null = True)
+    description = models.CharField(max_length = 250)
+    transaction_date = models.DateField(null = True)
+    type_category = models.CharField(max_length = 100, null = True, default = 'unknown')
+    transaction_type = models.CharField(max_length = 100, null = True, default = 'transfer')
     
 
 

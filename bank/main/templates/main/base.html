@@ -64,8 +64,20 @@
                     <hr>
                    <!--  <label class="menu_label"><a class = "menu_link" href="{% url 'login' %}">Go back to login</a></label> -->
                     <label class="menu_label"><a class = "menu_link" href="{% url 'main page' %}">Home</a></label>
-                    <label class="menu_label"><a class = "menu_link" href="{% url 'account summary' %}">Account Summary</a></label>
-                    <label class="menu_label"><a class = "menu_link" href="{% url 'checking_acct_page' %}">Checking</a></label>
+
+                    <div class="dropdown">
+                       <label class="menu_label"><a class ="menu_link" href="#"><span style="color:#006400;">Accounts</span></a></label>
+                       {% if user.is_authenticated %}
+                          <div class="dropdown-content">
+                            <p><span style="font-weight:bold; font-size:13pt; color:grey;">Accounts Overview: </span></p>
+                            <p><a  class="account_link" href="{% url 'checking_acct_page' %}"><span id = "account_title">Checking:<span id="balance_amount">${{request.session.checking_account_balance}}</span></a></p>
+                            <p><a  class="account_link" href="{% url 'savings_acct_page' %}"><span id = "account_title">Savings:<span id="balance_amount">${{request.session.savings_account_balance}}</span></span></a></p>
+                            <p><a  class="account_link" href="{% url 'creditcard_acct_page' %}"><span id = "account_title">Credit Card:<span id="balance_amount">${{request.session.credit_card_account_balance}}</span></span></a></p>
+                          </div>
+                       {% endif %}
+                    </div>
+
+                  <!--  <label class="menu_label"><a class = "menu_link" href="{% url 'checking_acct_page' %}">Checking</a></label> -->
                     <label class="menu_label"><a class = "menu_link" href="{% url 'profile' %}">Manage Account</a></label>
 
                     {% if user.is_authenticated %}
