@@ -1,4 +1,66 @@
-{%extends 'main/base.html'%}
-{% block content %}
-<h1>Account Summary</h1>
-{%endblock%}
+{% extends 'main/base.html'%}
+
+{% block inlinestyle %}
+      
+{% endblock inlinestyle %}
+
+{% block title %} GFY Account Summary {% endblock title %}
+  
+  {% block content %}
+<br/>
+  <div class="jumbotron">
+    <div class="container mb-3 mt-3 container_table">
+       <table  class = "table table-striped  mydatatable" style="width: 100%" border=0>
+           <thead><b>
+           <u>GFY Banking Account Summary -
+           <script>
+           var today = new Date();
+           var dd = String(today.getDate()).padStart(2, '0');
+           var mm = String(today.getMonth() + 1).padStart(2, '0');
+           var yyyy = today.getFullYear();
+           var hour = today.getHours();
+           var min = today.getMinutes();
+           min = ("0" + min).slice(-2);
+           today = mm + '/' + dd + '/' + yyyy + '  ' + hour + ':' + min + ' PST';
+           document.write(today);
+           </script>
+           </u>
+           </b>
+              <tr>
+
+                  <th colspan="6">Checking Account ending in (..1038)<br/>Available Balance: <b><a style="color:green">$199.78</a></b>
+                  </th>
+                 
+              </tr>
+              <tr>
+                  <th colspan="6">Savings Account ending in (..2978)<br/>Available Balance: <b><a style="color:green">$351.22</a></b>
+                  </th>
+                 
+              </tr>
+              <tr>
+                  <th colspan="6">Credit Card Account ending in (..6732)<br/>Available Credit:
+                      <b><a style="color:green">$12.35</a></b>
+                      <br/>Outstanding Balance:
+                      <b><a style="color:red">$487.65</b>
+                  </th>
+              </tr>
+           </thead>
+       </table>
+       <script>
+            $('.mydatatable').DataTable();
+       </script>
+   </div>
+  </div>
+  
+  <div class="jumbotron">
+       <div class="container mb-3 mt-2 container_table">
+          <div class="row">
+            <div class="col offset-md-4">
+            </div>
+            <div class="col offset-md-4">
+            </div>
+          </div>
+        </div>
+  </div>
+   {% endblock %}
+
