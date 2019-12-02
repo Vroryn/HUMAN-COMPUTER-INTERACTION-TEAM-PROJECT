@@ -303,5 +303,10 @@ def profile_edit_view(request):
 
 
 def account_summary(request):
-    return render(request, 'main/account_summary.html')
+    if request.user.is_authenticated:
+        return render(request, 'main/account_summary.html')
+    else:
+        return redirect('login')
+
+    
        
