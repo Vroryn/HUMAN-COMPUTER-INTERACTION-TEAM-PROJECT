@@ -28,20 +28,20 @@
            </b>
               <tr>
 
-                  <th colspan="6">Checking Account ending in (..1038)<br/>Available Balance: <b><a style="color:green">$199.78</a></b>
+                  <th colspan="6">Checking Account ending in (..{{request.session.customer_id_num}}{{request.session.account_number_checking}})<br/>Available Balance: <b><a style="color:green">${{request.session.checking_account_balance}}</a></b>
                   </th>
                  
               </tr>
               <tr>
-                  <th colspan="6">Savings Account ending in (..2978)<br/>Available Balance: <b><a style="color:green">$351.22</a></b>
+                  <th colspan="6">Savings Account ending in (..{{request.session.customer_id_num}}{{request.session.account_number_savings}})<br/>Available Balance: <b><a style="color:green">${{request.session.savings_account_balance}}</a></b>
                   </th>
                  
               </tr>
               <tr>
-                  <th colspan="6">Credit Card Account ending in (..6732)<br/>Available Credit:
+                  <th colspan="6">Credit Card Account ending in (..{{request.session.customer_id_num}}{{request.session.account_number_credit}})<br/>Available Credit:
                       <b><a style="color:green">$12.35</a></b>
                       <br/>Outstanding Balance:
-                      <b><a style="color:red">$487.65</b>
+                      <b><a style="color:red">${{request.session.credit_card_account_balance}}</b>
                   </th>
               </tr>
            </thead>

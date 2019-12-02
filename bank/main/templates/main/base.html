@@ -81,7 +81,7 @@ background-size:cover;
                     <label class="menu_label"><a class = "menu_link" href="{% url 'main page' %}">Home</a></label>
 
                     <div class="dropdown">
-                       <label class="menu_label"><a class ="menu_link" href="#"><span style="color:#006400;">Accounts</span></a></label>
+                       <label class="menu_label"><a class ="menu_link" href="{% url 'account_summary' %}"><span style="color:#006400;">Accounts Summary</span></a></label>
                        {% if user.is_authenticated %}
                           <div class="dropdown-content">
                             <p><span style="font-weight:bold; font-size:13pt; color:grey;">Accounts Overview: </span></p>

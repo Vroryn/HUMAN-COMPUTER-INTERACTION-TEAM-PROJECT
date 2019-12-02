@@ -45,4 +45,7 @@ path("main_page/<int:customer_number>/<int:account_number>/savings_acct_page/", 
 path("main_page/profile/", views.profile_view, name="profile"),
 path("main_page/profile/edit/", views.profile_edit_view, name="profile_edit"),
 
+path("main_page/account_summary/", views.account_summary, name="account_summary"),
+
+
 ]

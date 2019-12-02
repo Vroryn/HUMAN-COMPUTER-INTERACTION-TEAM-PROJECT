@@ -63,11 +63,15 @@ def main_page(request):
         savings_balance = savingsAcct.objects.filter(customer_id = customer_found_id).aggregate(balance_sum = Sum('amount'))['balance_sum']
 
 
-
+        request.session['customer_id_num'] = str(customer_found_id)
 
         request.session['checking_account_balance'] = str(checking_balance)
         request.session['savings_account_balance'] = str(savings_balance)
         request.session['credit_card_account_balance'] = str(credit_card_balance)
+
+        request.session['account_number_checking'] = str(account_number_checking)
+        request.session['account_number_savings']  = str(account_number_savings)
+        request.session['account_number_credit'] = str(account_number_credit)
 
 
     return render(request,'main/home_page.html')
@@ -296,4 +300,8 @@ def profile_edit_view(request):
         #return redirect('login')
     else:
         return redirect('login')
+
+
+def account_summary(request):
+    return render(request, 'main/account_summary.html')
        
