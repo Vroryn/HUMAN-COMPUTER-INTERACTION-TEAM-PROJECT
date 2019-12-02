@@ -280,6 +280,8 @@ def profile_edit_view(request):
                 form.save()
                 messages.success(request, f'Your profile information was updated.')
                 return redirect('profile')
+            #else:
+              #  return redirect()
 
         else:
             data = {
@@ -297,6 +299,9 @@ def profile_edit_view(request):
             form = Profile_Edit_Form(data)
             args = {'form': form}
             return render(request, 'main/profile_edit.html', args)
+
+        
+        return redirect('profile_edit')
         #return redirect('login')
     else:
         return redirect('login')
