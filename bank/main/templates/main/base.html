@@ -1,5 +1,15 @@
 {%load static%}
 <!DOCTYPE html>
+
+<style>
+head {
+background-image:url(https://storage.googleapis.com/elevate-images/8b4bc257-6c12-4b02-9482-e9f324b541f6/2ae72b17-a752-452e-86d9-633a1d8b929e.jpeg);
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+
+}
+</style>
 <html>
 <head>
         <link rel="stylesheet" type="text/css" href="{%static 'main/style.css'%}">
@@ -10,19 +20,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
-    
-     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">  
-    
-    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">  
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-     <link rel="stylesheet" type="text/css" href="{%static 'main/account_view.css'%}" > 
-   
+     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+     <link rel="stylesheet" type="text/css" href="{%static 'main/account_view.css'%}" >
+
 
     <!-- added by Rene-->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>     
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -35,7 +45,7 @@
 
 
         {% block inlinestyle %}
-          
+
         {% endblock inlinestyle %}
     </style>
 
@@ -54,10 +64,15 @@
         {% endif %}
 
         <div class="sticky-top">
+
                 <div id=" navigation">
                     <h1>
-                        
-                                <label class="bank_title">GFY-Banking</label>
+
+                                <label class="bank_title">
+                                  <a href="http://127.0.0.1:8000/main_page/"><img
+                                          src="https://ci6.googleusercontent.com/proxy/cG44DY0S0A635S6JSfly-CKZOb9VzntBNEuCfBHOvHyYzrfxicpMc82QhcvCWouJ7wRAx_BZQCCUSqeMISnTHA2s1pRPKlm0j_dSbev1iUXiAJW4v-MDWEFyun4m_wtAR17AYDin4BUmqoGbwxwaLbw61-8yZvDW=s0-d-e1-ft#https://www.freelogodesign.org/file/app/client/thumb/f7075802-2f1c-4fea-ba09-bd17571bf2b7_200x200.png"
+                                          ></a>
+                                </label>
                     </h1>
                     <h2>
                     <div id="navigation-options">
@@ -72,7 +87,7 @@
                        <label class="menu_label"><a class = "login_link" href="{% url 'logout' %}">[ Logout : {{user.username}} ]</a></label>
                     {% else %}
                     <label class="menu_label"><a class = "login_link" href="{% url 'login' %}">[ Login </a>|<a class = "login_link" href="{% url 'register' %}"> Register ]</a></label>
-                   
+
                     {% endif %}
 
                     <hr>

@@ -129,3 +129,17 @@ a.login_link
 {
     font-weight:bold;
 }
+
+#grid{
+    border: 20px white solid;
+    float:left;
+}
+
+#grid div{
+    float: left;
+    padding 10px;
+}
+
+#grid div img{
+    width:320px;
+}
